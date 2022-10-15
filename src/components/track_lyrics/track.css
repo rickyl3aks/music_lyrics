@@ -1,0 +1,19 @@
+.container_lyric {
+  width: 80%;
+  margin: 3rem auto;
+  outline: #232323 solid 1px;
+  border-radius: 0.3rem;
+}
+
+.track_title {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: #232323;
+  color: #fff
+}
+
+.details {
+  margin: .5rem;
+  padding: .5rem 0;
+}
