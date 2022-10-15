@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { lyric } from "./modules";
 
-export const Track_api = (id: unknown) => {
+export const TrackApi = (id: unknown) => {
   const [lyric, setLyric] = useState<lyric | any>();
   const [songDetails, setSongDetails] = useState<any>();
   const [loading, setIsLoading] = useState(true);
   const [error, setIsError] = useState<unknown>();
 
-  const get_api = async (song: unknown) => {
+  const getApi = async (song: unknown) => {
     try {
       const res = await fetch(
         `https://api.codetabs.com/v1/proxy/?quest=api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${song}&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
@@ -27,7 +27,7 @@ export const Track_api = (id: unknown) => {
   };
 
   useEffect(() => {
-    get_api(id);
+    getApi(id);
   }, [id]);
 
   return {

@@ -1,5 +1,5 @@
 import { Link, Route, Routes } from "react-router-dom";
-import { Get_api } from "../api/Get_api";
+import { GetApi } from "../api/GetApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCompactDisc,
@@ -8,15 +8,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Lyrics } from "./lyrics/Lyrics";
 import "./songs.css";
-import { TrackLyric } from "../track_lyrics/TrackLyric";
+import { TrackLyric } from "../trackLyrics/TrackLyric";
 import { Loader } from "../loader/Loader";
 import { Search } from "../search/Search";
 import { useSelector } from "react-redux";
-import { Search_api } from "../search/Search_api";
-import { Track_api } from "../track_lyrics/Track_api";
+import { SearchApi } from "../search/SearchApi";
+import { TrackApi } from "../trackLyrics/TrackApi";
 
 export const Songs = () => {
-  const { lyrics, isLoading, isError } = Get_api();
+  const { lyrics, isLoading, isError } = GetApi();
 
 
 

@@ -2,10 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 import "./search.css";
 import { useEffect, useState } from "react";
-import { Track_api } from "../track_lyrics/Track_api";
-import { Search_api } from "./Search_api";
+import { SearchApi } from "./SearchApi";
+import { TrackApi } from "../trackLyrics/TrackApi";
 import { useDispatch, useSelector } from "react-redux";
-import { artist_name } from "../../features/artist/ArtistSlice";
 
 export const Search = () => {
   const [userInput, setUserInput] = useState();
@@ -23,8 +22,8 @@ export const Search = () => {
   };
 
   useEffect(() => {
-    if (trackTitle !== "") dispatch(artist_name(trackTitle));
-  }, [dispatch, trackTitle]);
+    if (trackTitle !== "") dispatch(artistName(trackTitle));
+  }, [dispatch, trackTitle, artistName]);
 
   // const { artist } = Search_api(artistName);
 

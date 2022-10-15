@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TrackLyric } from "../../track_lyrics/TrackLyric";
+import { TrackLyric } from "../../trackLyrics/TrackLyric";
 import "./lyrics.css";
 
 export const Lyrics = ({ track }: any) => {

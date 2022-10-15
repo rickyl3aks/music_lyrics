@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const Search_api = (title: any) => {
+export const SearchApi = (title: any) => {
   const [artist, setArtist] = useState<any>();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState<unknown>();

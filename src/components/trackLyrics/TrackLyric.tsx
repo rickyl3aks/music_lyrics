@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Loader } from "../loader/Loader";
 import { lyric } from "./modules";
-import { Track_api } from "./Track_api";
+import { TrackApi } from "./TrackApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCompactDisc,
@@ -19,9 +19,9 @@ export const TrackLyric = (track: any) => {
     setParams(param.id);
   }, [param.id]);
 
-  const { lyric, songDetails, loading, error } = Track_api(param.id);
+  const { lyric, songDetails, loading, error } = TrackApi(param.id);
 
-  console.log(lyric)
+  console.log(lyric);
 
   if (error) {
     return (

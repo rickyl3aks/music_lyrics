@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "./counterSlice";
-import { artist_name } from "../artist/ArtistSlice";
 
 export function Counter() {
   const count = useSelector((state: any) => state.counter.value);
