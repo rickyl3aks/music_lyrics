@@ -8,6 +8,8 @@ import {
   faCompactDisc,
   faMusic,
   faWarning,
+  faMicrophone
+
 } from "@fortawesome/free-solid-svg-icons";
 import "./track.css";
 
@@ -20,8 +22,6 @@ export const TrackLyric = (track: any) => {
   }, [param.id]);
 
   const { lyric, songDetails, loading, error } = TrackApi(param.id);
-
-  console.log(lyric);
 
   if (error) {
     return (
@@ -56,25 +56,30 @@ export const TrackLyric = (track: any) => {
       {songDetails.message.body.track.artist_name !== undefined && (
         <div className="container_lyric">
           <div className="track_title">
-            <h2>{songDetails.message.body.track.artist_name}</h2>
+            <h2>{songDetails.message.body.track.track_name}</h2>
           </div>
           <div>
             <div className="details">
               <p>{lyric.message.body.lyrics.lyrics_body}</p>
 
               <p>
+                <FontAwesomeIcon icon={faMicrophone} />
+                <strong> Singer: </strong>
+                {songDetails.message.body.track.artist_name}
+              </p>
+              <p>
                 <FontAwesomeIcon icon={faCompactDisc} />
                 <strong> Album: </strong>
                 {songDetails.message.body.track.album_name}
               </p>
-              {/* <p>
+              <p>
                 <FontAwesomeIcon icon={faMusic} />
                 <strong> Genre: </strong>
                 {
                   songDetails.message.body.track.primary_genres
                     .music_genre_list[0].music_genre.music_genre_name
                 }
-              </p> */}
+              </p>
               <p>
                 <FontAwesomeIcon icon={faWarning} />
                 <strong> Explicit Words: </strong>
