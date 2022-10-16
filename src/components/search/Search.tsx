@@ -1,40 +1,37 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 import "./search.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SearchApi } from "./SearchApi";
 import { TrackApi } from "../trackLyrics/TrackApi";
 import { useDispatch, useSelector } from "react-redux";
+import { TRACK_TITLE } from "../../features/track/trackSlice";
 
 export const Search = () => {
   const [userInput, setUserInput] = useState();
-  const [trackTitle, setTrackTitle] = useState<any>("");
-  const artistName = useSelector((state: any) => state.artist.artist);
+  const [getTitle, setGetTitle] = useState<any>("");
+  const trackName = useSelector((state: any) => state.track.track);
   const dispatch = useDispatch();
 
-  const find_track = (e: any) => {
+  useEffect(() => {
+    if (getTitle.length > 0) dispatch(TRACK_TITLE(getTitle));
+  }, [dispatch, getTitle, trackName]);
+
+  const findTrack = (e: any) => {
     e.preventDefault();
-    setTrackTitle(userInput);
+    setGetTitle(userInput);
   };
 
   const onChange = (e: any) => {
     setUserInput(e.target.value);
   };
 
-  useEffect(() => {
-    if (trackTitle !== "") dispatch(artistName(trackTitle));
-  }, [dispatch, trackTitle, artistName]);
-
-  // const { artist } = Search_api(artistName);
-
-  // console.log(artist !== undefined && artist.map((e: any) => e.track));
-
   return (
     <div className="form">
       <h1>
         <FontAwesomeIcon icon={faMusic} /> Search for a song
       </h1>
-      <form onSubmit={find_track}>
+      <form onSubmit={findTrack}>
         <input
           type="text"
           placeholder="Song title..."
@@ -45,7 +42,7 @@ export const Search = () => {
         <button className="btn" type="submit">
           Get track lyrics
         </button>
-        {artistName}
+        {trackName}
       </form>
     </div>
   );
