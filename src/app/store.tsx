@@ -1,10 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/counterSlice";
-import artistReducer from "../features/artist/ArtistSlice";
+import trackReducer from "../features/track/trackSlice";
+
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
-    artist: artistReducer,
+    track: trackReducer
   },
 });
