@@ -6,12 +6,12 @@ export const artistSlice = createSlice({
     artist: [],
   },
   reducers: {
-    artist_name: (state, action) => {
+    ARTIST_NAME: (state, action) => {
       state.artist = action.payload;
     },
   },
 });
 
-export const { artist_name } = artistSlice.actions;
+export const { ARTIST_NAME } = artistSlice.actions;
 
 export default artistSlice.reducer;
