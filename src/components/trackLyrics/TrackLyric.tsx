@@ -40,7 +40,7 @@ export const TrackLyric = (track: any) => {
   return (
     <div>
       <br />
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/music_lyrics" style={{ textDecoration: "none" }}>
         <span
           style={{
             backgroundColor: "#232323",
