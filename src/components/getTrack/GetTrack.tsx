@@ -15,7 +15,6 @@ const GetTrack = ({ song }: any) => {
     return artist_name;
   };
 
-
   return (
     <div className="container_item">
       <details>
@@ -29,14 +28,16 @@ const GetTrack = ({ song }: any) => {
             <FontAwesomeIcon icon={faCompactDisc} />
             <strong> Album:</strong> {song.track.album_name}
           </p>
-          <p>
-            <FontAwesomeIcon icon={faMusic} />
-            <strong> Genre:</strong>
-            {
-              song.track.primary_genres.music_genre_list[0].music_genre
-                .music_genre_name
-            }
-          </p>
+          {song.track.primary_genres.music_genre_list[0] && (
+            <p>
+              <FontAwesomeIcon icon={faMusic} />
+              <strong> Genre:</strong>
+              {
+                song.track.primary_genres.music_genre_list[0].music_genre
+                  .music_genre_name
+              }
+            </p>
+          )}
           <Link
             to={`/track/${song.track.track_id}`}
             style={{ textDecoration: "none" }}
