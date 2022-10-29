@@ -13,7 +13,6 @@ export const Songs = () => {
   const trackName = useSelector((state: any) => state.track.track);
   const { lyrics, songDetails, isLoading, isError } = GetApi(trackName);
 
-   console.log(trackName)
   if (isError) {
     console.log(isError)
     return (
