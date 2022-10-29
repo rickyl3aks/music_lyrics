@@ -10,7 +10,7 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Songs />} />
+          <Route path="/music_lyrics" element={<Songs />} />
           <Route path={`/track/:id`} element={<TrackLyric />} />
           <Route path="*" element={<h1>sorry, not found</h1>} />
         </Routes>
