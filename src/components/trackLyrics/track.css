@@ -17,3 +17,8 @@
   margin: .5rem;
   padding: .5rem 0;
 }
+
+.lyric {
+  white-space: pre-line;
+  text-align: center;
+}

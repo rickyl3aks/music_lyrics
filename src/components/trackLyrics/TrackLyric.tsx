@@ -60,8 +60,7 @@ export const TrackLyric = (track: any) => {
           </div>
           <div>
             <div className="details">
-              <p>{lyric.message.body.lyrics.lyrics_body}</p>
-
+              <p className="lyric">{lyric.message.body.lyrics.lyrics_body}</p>
               <p>
                 <FontAwesomeIcon icon={faMicrophone} />
                 <strong> Singer: </strong>
