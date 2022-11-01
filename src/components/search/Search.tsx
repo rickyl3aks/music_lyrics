@@ -1,9 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 import "./search.css";
-import { useEffect, useRef, useState } from "react";
-import { SearchApi } from "./SearchApi";
-import { TrackApi } from "../trackLyrics/TrackApi";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TRACK_TITLE } from "../../features/track/trackSlice";
 
@@ -39,10 +37,7 @@ export const Search = () => {
           value={userInput || ""}
           onChange={onChange}
         />
-        <button className="btn" type="submit">
-          Get track lyrics
-        </button>
-        {trackName}
+        <button type="submit">Get track lyrics</button>
       </form>
     </div>
   );

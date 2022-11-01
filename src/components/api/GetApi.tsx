@@ -12,10 +12,10 @@ export const GetApi = (song?: unknown) => {
     const getLyrics = async (): Promise<void> => {
       try {
         const res = await fetch(
-          `https://api.codetabs.com/v1/proxy/?quest=api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
+          `https://api.codetabs.com/v1/proxy/?quest=https://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
         );
         const secondRes = await fetch(
-          `https://api.codetabs.com/v1/proxy/?quest=api.musixmatch.com/ws/1.1/track.search?q_track=${trackName}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
+          `https://api.codetabs.com/v1/proxy/?quest=https://api.musixmatch.com/ws/1.1/track.search?q_track=${trackName}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
         );
         const tracks = await res.json();
         const dataTrack = await secondRes.json();

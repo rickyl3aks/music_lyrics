@@ -9,6 +9,19 @@ input {
 }
 
 button {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0.5rem auto;
+  border: none;
+  padding: 0.5rem 0;
+  background-color: rgb(48, 45, 45);
+  color: #ffff;
+  width: 7rem;
+  border-radius: 0.2rem;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }

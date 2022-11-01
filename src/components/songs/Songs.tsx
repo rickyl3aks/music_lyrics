@@ -3,18 +3,18 @@ import { Lyrics } from "./lyrics/Lyrics";
 import { TrackLyric } from "../trackLyrics/TrackLyric";
 import { Loader } from "../loader/Loader";
 import { Search } from "../search/Search";
-import { useDispatch, useSelector } from "react-redux";
-import { SearchApi } from "../search/SearchApi";
-import { TrackApi } from "../trackLyrics/TrackApi";
+import { useSelector } from "react-redux";
 import GetTrack from "../getTrack/GetTrack";
-import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 export const Songs = () => {
   const trackName = useSelector((state: any) => state.track.track);
   const { lyrics, songDetails, isLoading, isError } = GetApi(trackName);
+  console.log(trackName.length > 0);
 
   if (isError) {
-    console.log(isError)
+    console.log(isError);
     return (
       <div>
         <h1 style={{ textAlign: "center" }}>
@@ -31,7 +31,15 @@ export const Songs = () => {
   return (
     <>
       <Search />
-      <h1 className="page_title">Top 10 Tracks</h1>
+      <h1 className="page_title">
+        {trackName.length > 0 ? (
+          <>
+            <FontAwesomeIcon icon={faPlay} /> Track: {trackName}
+          </>
+        ) : (
+          "Top 10 Track"
+        )}
+      </h1>
       <div className="container">
         {!isLoading &&
           lyrics.track_list !== undefined &&

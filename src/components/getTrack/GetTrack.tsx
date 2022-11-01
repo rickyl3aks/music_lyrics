@@ -4,7 +4,6 @@ import {
   faCompactDisc,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Lyrics } from "../songs/lyrics/Lyrics";
 import "./getTrack.css";
@@ -17,38 +16,35 @@ const GetTrack = ({ song }: any) => {
 
   return (
     <div className="container_item">
-      <details>
-        <summary className="title">{limitText(song.track.artist_name)}</summary>
-        <div className="box_container">
+      <div className="title">{limitText(song.track.artist_name)}</div>
+      <div className="infos">
+        <p>
+          <FontAwesomeIcon icon={faPlay} />
+          <strong> Track:</strong> {song.track.track_name}
+        </p>
+        <p>
+          <FontAwesomeIcon icon={faCompactDisc} />
+          <strong> Album:</strong> {song.track.album_name}
+        </p>
+        {song.track.primary_genres.music_genre_list[0] && (
           <p>
-            <FontAwesomeIcon icon={faPlay} />
-            <strong> Track:</strong> {song.track.track_name}
+            <FontAwesomeIcon icon={faMusic} />
+            <strong> Genre:</strong>
+            {
+              song.track.primary_genres.music_genre_list[0].music_genre
+                .music_genre_name
+            }
           </p>
-          <p>
-            <FontAwesomeIcon icon={faCompactDisc} />
-            <strong> Album:</strong> {song.track.album_name}
-          </p>
-          {song.track.primary_genres.music_genre_list[0] && (
-            <p>
-              <FontAwesomeIcon icon={faMusic} />
-              <strong> Genre:</strong>
-              {
-                song.track.primary_genres.music_genre_list[0].music_genre
-                  .music_genre_name
-              }
-            </p>
-          )}
-          <Link
-            to={`/track/${song.track.track_id}`}
-            style={{ textDecoration: "none" }}
-          >
-            <Lyrics
-              track={song.track.track_id}
-              artist={song.track.artist_name}
-            />
-          </Link>
-        </div>
-      </details>
+        )}
+
+        <div className="space"></div>
+        <Link
+          to={`/track/${song.track.track_id}`}
+          style={{ textDecoration: "none" }}
+        >
+          <Lyrics track={song.track.track_id} artist={song.track.artist_name} />
+        </Link>
+      </div>
     </div>
   );
 };

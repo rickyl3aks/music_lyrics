@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { TrackLyric } from "../../trackLyrics/TrackLyric";
+import { useState } from "react";
 import "./lyrics.css";
 
 export const Lyrics = ({ track }: any) => {
   const [lyric, setLyric] = useState<any>();
-  const [error, setError] = useState<unknown>();
 
   const track_id = async (id: string) => {
     try {
@@ -18,10 +16,8 @@ export const Lyrics = ({ track }: any) => {
     }
   };
   return (
-    <div>
-      <button className="btn" onClick={() => track_id(track)}>
-        Get track lyrics
-      </button>
-    </div>
+    <button className="btn" onClick={() => track_id(track)}>
+      Get track lyrics
+    </button>
   );
 };
