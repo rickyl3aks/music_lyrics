@@ -12,11 +12,16 @@ export const GetApi = (song?: unknown) => {
     const getLyrics = async (): Promise<void> => {
       try {
         const res = await fetch(
-          `https://api.codetabs.com/v1/proxy/?quest=https://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
+          `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
         );
         const secondRes = await fetch(
-          `https://api.codetabs.com/v1/proxy/?quest=https://api.musixmatch.com/ws/1.1/track.search?q_track=${trackName}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
+          `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${trackName}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
         );
+        if (res.status === 403) {
+          setIsError("no access");
+        } else if (res.status >= 400 && res.status < 500) {
+          setIsError("client error");
+        }
         const tracks = await res.json();
         const dataTrack = await secondRes.json();
         setIsLoading(false);
@@ -26,7 +31,7 @@ export const GetApi = (song?: unknown) => {
         });
         setSongDetails(dataTrack.message.body.track_list);
       } catch (error) {
-        setIsError(error);
+        console.error(error);
       }
     };
     getLyrics();

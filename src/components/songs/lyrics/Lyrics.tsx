@@ -7,7 +7,7 @@ export const Lyrics = ({ track }: any) => {
   const track_id = async (id: string) => {
     try {
       const res = await fetch(
-        `https://api.codetabs.com/v1/proxy/?quest=api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${id}&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
+        `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${id}&apikey=${process.env.REACT_APP_MUSIXMATCH_KEY}`
       );
       const data = await res.json();
       setLyric(data);

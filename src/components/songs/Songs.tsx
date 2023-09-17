@@ -7,21 +7,33 @@ import { useSelector } from "react-redux";
 import GetTrack from "../getTrack/GetTrack";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 export const Songs = () => {
   const trackName = useSelector((state: any) => state.track.track);
   const { lyrics, songDetails, isLoading, isError } = GetApi(trackName);
-  console.log(trackName.length > 0);
+
+  const errorComponents: { [key: string]: JSX.Element | null } = {
+    "no access": (
+      <p style={{ textAlign: "center" }}>
+        <a
+          href="https://cors-anywhere.herokuapp.com/corsdemo"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Access the CORS server link, then refresh the page
+        </a>
+      </p>
+    ),
+    "client error": (
+      <h1 style={{ textAlign: "center" }}>
+        There has been an error... Please, try again
+      </h1>
+    ),
+  };
 
   if (isError) {
-    console.log(isError);
-    return (
-      <div>
-        <h1 style={{ textAlign: "center" }}>
-          There has been an error... Please, try again
-        </h1>
-      </div>
-    );
+    return errorComponents[isError];
   }
 
   if (isLoading) {
